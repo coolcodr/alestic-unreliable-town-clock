@@ -41,7 +41,7 @@ payload=$(echo -n "$message" |
   python -c 'import json,sys; print json.dumps(sys.stdin.read())')
 
 retry_until="$(date --date="+10 minutes" -u +"%Y-%m-%d %H:%M:%S %Z")"
-while ! aws sns publish \
+while ! /usr/local/bin/aws sns publish \
   --region "$region" \
   --topic-arn "$sns_topic_arn" \
   --subject "$subject" \
